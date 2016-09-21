@@ -40,11 +40,11 @@ SOFTWARE.
 
 // this will be displayed on the screensaver.
 // Up to 10 letters
-#define CALL_SIGN "CALL SIGN"
+#define CALL_SIGN "Doc FPV"
 
 // Feature Togglels
 #define USE_DIVERSITY
-#define USE_IR_EMITTER
+//#define USE_IR_EMITTER
 //#define USE_FLIP_SCREEN
 #define USE_BOOT_LOGO
 // Choose if you wish to use 8 additional Channels 

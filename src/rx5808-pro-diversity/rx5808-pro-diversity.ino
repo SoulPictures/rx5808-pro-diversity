@@ -39,17 +39,17 @@ SOFTWARE.
 
 // uncomment depending on the display you are using.
 // this is an issue with the arduino preprocessor
-#ifdef TVOUT_SCREENS
+//#ifdef TVOUT_SCREENS
 //    #include <TVout.h>
 //    #include <fontALL.h>
-#endif
+//#endif
 #ifdef OLED_128x64_ADAFRUIT_SCREENS
 
-	#ifdef SH1106
-		#include <Adafruit_SH1106.h>
-	#else
+//	#ifdef SH1106
+//		#include <Adafruit_SH1106.h>
+//	#else
 		#include <Adafruit_SSD1306.h>
-	#endif
+//	#endif
     #include <Adafruit_GFX.h>
     #include <Wire.h>
     #include <SPI.h>
