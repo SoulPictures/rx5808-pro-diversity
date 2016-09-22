@@ -29,9 +29,9 @@ SOFTWARE.
 #ifdef OLED_128x64_ADAFRUIT_SCREENS
 #include "screens.h" // function headers
 #ifdef SH1106
-	#include <Adafruit_SH1106.h>
+  #include <Adafruit_SH1106.h>
 #else
-	#include <Adafruit_SSD1306.h>
+  #include <Adafruit_SSD1306.h>
 #endif
 #include <Adafruit_GFX.h>
 #include <Wire.h>
@@ -46,15 +46,15 @@ char *PSTRtoBuffer_P(PGM_P str) { uint8_t c='\0', i=0; for(; (c = pgm_read_byte(
 #define INVERT INVERSE
 #define OLED_RESET 4
 #ifdef SH1106
-	Adafruit_SH1106 display(OLED_RESET);
-	#if !defined SH1106_128_64
-		#error("Screen size incorrect, please fix Adafruit_SH1106.h!");
-	#endif
+  Adafruit_SH1106 display(OLED_RESET);
+  #if !defined SH1106_128_64
+    #error("Screen size incorrect, please fix Adafruit_SH1106.h!");
+  #endif
 #else
-	Adafruit_SSD1306 display(OLED_RESET);
-	#if !defined SSD1306_128_64
-		#error("Screen size incorrect, please fix Adafruit_SSD1306.h!");
-	#endif
+  Adafruit_SSD1306 display(OLED_RESET);
+  #if !defined SSD1306_128_64
+    #error("Screen size incorrect, please fix Adafruit_SSD1306.h!");
+  #endif
 #endif
 
 
@@ -195,15 +195,19 @@ void screens::seekMode(uint8_t state) {
     display.drawLine(0, 36, display.width(), 36, WHITE);
     display.drawLine(0, display.height()-11, display.width(), display.height()-11, WHITE);
     display.setCursor(2,display.height()-9);
-#ifdef USE_LBAND
-    display.print(PSTR2("5362"));
+#ifdef USE_RACEONLY
+    display.print(PSTR2("5658"));
 #else
     display.print(PSTR2("5645"));
 #endif
     display.setCursor(55,display.height()-9);
     display.print(PSTR2("5800"));
     display.setCursor(display.width()-25,display.height()-9);
+ #ifdef USE_RACEONLY
+    display.print(PSTR2("5917"));
+#else
     display.print(PSTR2("5945"));
+#endif   
     display.display();
 }
 
@@ -229,7 +233,7 @@ void screens::updateSeekMode(uint8_t state, uint8_t channelIndex, uint8_t channe
         }
         else if(channelIndex > 31)
 #else
-	if(channelIndex > 31)
+  if(channelIndex > 31)
 #endif
         {
             display.print(PSTR2("C/Race   "));
@@ -653,14 +657,11 @@ void screens::save(uint8_t mode, uint8_t channelIndex, uint16_t channelFrequency
     display.setCursor(38,8*2+4);
     // print band
 #ifdef USE_LBAND
-    if(channelIndex < 8)
+    if(channelIndex > 39)
     {
         display.print(PSTR2("D/5.3    "));
     }
-    else  
-    {
-        display.print(PSTR2("C/Race"));
-    }
+    else if(channelIndex > 31)
 #else
     if(channelIndex > 31)
 #endif
