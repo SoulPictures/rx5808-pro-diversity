@@ -50,7 +50,7 @@ SOFTWARE.
 // Choose if you wish to use 8 additional Channels 
 // 5362 MHz 5399 MHz 5436 MHz 5473 MHz 5510 MHz 5547 MHz 5584 MHz 5621 MHz
 // Local laws may prohibit the use of these frequencies use at your own risk!
-//#define USE_LBAND
+#define USE_RACEONLY
 
 // Receiver Module version
 // used for tuning time
@@ -130,8 +130,8 @@ SOFTWARE.
 
 #define CHANNEL_BAND_SIZE 8
 #define CHANNEL_MIN_INDEX 0
-#ifdef USE_LBAND
-    #define CHANNEL_MAX_INDEX 47
+#ifdef USE_RACEONLY
+    #define CHANNEL_MAX_INDEX 7
 #else
     #define CHANNEL_MAX_INDEX 39
 #endif
@@ -147,8 +147,8 @@ SOFTWARE.
     #define MIN_TUNE_TIME 35
 #endif
 
-#ifdef USE_LBAND
-    #define CHANNEL_MAX 47
+#ifdef USE_RACEONLY
+    #define CHANNEL_MAX 7
 #else
     #define CHANNEL_MAX 39
 #endif

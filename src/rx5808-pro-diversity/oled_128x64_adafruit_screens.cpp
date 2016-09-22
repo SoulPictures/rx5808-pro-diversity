@@ -653,11 +653,14 @@ void screens::save(uint8_t mode, uint8_t channelIndex, uint16_t channelFrequency
     display.setCursor(38,8*2+4);
     // print band
 #ifdef USE_LBAND
-    if(channelIndex > 39)
+    if(channelIndex < 8)
     {
         display.print(PSTR2("D/5.3    "));
     }
-    else if(channelIndex > 31)
+    else  
+    {
+        display.print(PSTR2("C/Race"));
+    }
 #else
     if(channelIndex > 31)
 #endif
