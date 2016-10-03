@@ -1,3 +1,6 @@
+Fork from Sheaivey, Reduced to RaceBand Channels only for easier head on operation
+
+
 #Introduction
 The main goal of this project is to add diversity to an already amazing feature set. Please see the following video for a quick intro of the project.
 
